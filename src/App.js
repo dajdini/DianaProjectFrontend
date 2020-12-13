@@ -1,24 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Home from './components/HomePage/Home';
+import Footer from './components/Footer/Footer';
+import Info from './components/InfoPage/Info';
+import Booking from './components/BookingsPage/Booking';
+/*<Route path='/services' component={Services} /> */
+import React from 'react';
+import Secret from './AppSecret';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+    <Navbar />
+    <Switch>
+      <Route path='/' exact component={Home}/>
+      <Route path='/information' exact component={Info}/>
+      <Route path='/booking' exact component={Booking}/>
+      <Route path='/bookings' exact component={Secret}/>
+    </Switch>
+    <Footer />
+    </Router>
+      /*
+      <Provider store={store}>
+      <ToastProvider autoDismiss={true}>
+      <Container maxWidth="ld">
+      <Bookings/></Container>
+      </ToastProvider>
+      </Provider>*/
   );
 }
 
